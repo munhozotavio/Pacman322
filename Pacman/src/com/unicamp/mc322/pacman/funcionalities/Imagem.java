@@ -55,11 +55,11 @@ public class Imagem {
 		topoEsquerdo.setY(novoX);
 	}
 	
-	public int getAltura() {
+	private int getAltura() {
 		return (int)(this.img.getHeight() * escala.getY());
 	}
 	
-	public int getLargura() {
+	private int getLargura() {
 		return (int)(this.img.getWidth() * escala.getX());
 	}
 	

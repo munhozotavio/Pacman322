@@ -12,7 +12,10 @@ public class Game implements Runnable {
     private Graphics g;
     private Thread t;
     
-    Imagem img;
+    private final int tamanhoTela = 512;
+    private final String pathProPlanoDeFundo = "/home/cc2018-ceb/ra214777/Downloads/7b000e9a5060837b7e018c42bf166486e66ed44cr1-1150-2048v2_128.jpg"; 
+    
+    Imagem planoDeFundo;
     
     public synchronized void start() {
         if (running) {
@@ -58,7 +61,7 @@ public class Game implements Runnable {
 
 
         g = display.getCanvas().getGraphics();
-        img.draw(g);
+        planoDeFundo.draw(g);
     }
 	
 	private void tick() {
@@ -71,7 +74,7 @@ public class Game implements Runnable {
     }
 	
 	private void init() {
-		img = new Imagem("/home/cc2018-ceb/ra214777/Downloads/7b000e9a5060837b7e018c42bf166486e66ed44cr1-1150-2048v2_128.jpg", new Ponto(0,0), new Ponto(6.25f,6.25f));
-        display = new Display("draw image", 800, 800);
+		planoDeFundo = new Imagem(pathProPlanoDeFundo, new Ponto(0,0), new Ponto(6.25f,6.25f));
+        display = new Display("draw image", tamanhoTela, tamanhoTela);
     }
 }

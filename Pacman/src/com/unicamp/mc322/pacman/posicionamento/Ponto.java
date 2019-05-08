@@ -15,6 +15,10 @@ public class Ponto {
 	public void setX(float x) {
 		this.x = x;
 	}
+	
+	public void addX(float x) {
+		this.x += x;
+	}
 
 	public float getY() {
 		return y;
@@ -22,6 +26,10 @@ public class Ponto {
 
 	public void setY(float y) {
 		this.y = y;
+	}
+	
+	public void addY(float y) {
+		this.y += y;
 	}
 	
 }
