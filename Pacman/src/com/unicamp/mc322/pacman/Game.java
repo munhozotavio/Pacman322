@@ -1,7 +1,10 @@
 package com.unicamp.mc322.pacman;
 
 import java.awt.Graphics;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
+import java.util.HashMap;
 
 import com.unicamp.mc322.pacman.funcionalities.*;
 import com.unicamp.mc322.pacman.posicionamento.Ponto;
@@ -13,7 +16,8 @@ public class Game implements Runnable {
     private Thread t;
     
     private final int tamanhoTela = 512;
-    private final String pathProPlanoDeFundo = "/home/cc2018-ceb/ra214777/Downloads/7b000e9a5060837b7e018c42bf166486e66ed44cr1-1150-2048v2_128.jpg"; 
+    private final String pathProPlanoDeFundo = "/home/cc2018-ceb/ra214777/Downloads/7b000e9a5060837b7e018c42bf166486e66ed44cr1-1150-2048v2_128.jpg";
+    private HashMap<Integer, Boolean> keyPressed = new HashMap<>();
     
     Imagem planoDeFundo;
     
@@ -56,11 +60,29 @@ public class Game implements Runnable {
         if (bs == null) {
             System.out.println("bs is null....");
             display.getCanvas().createBufferStrategy(3);
+
             return;
         }
 
 
         g = display.getCanvas().getGraphics();
+        display.getCanvas().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                keyPressed.put(e.getKeyCode(), true);
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                keyPressed.put(e.getKeyCode(), false);
+            }
+        });
         planoDeFundo.draw(g);
     }
 	
